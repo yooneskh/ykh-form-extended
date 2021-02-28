@@ -71,7 +71,14 @@ export default {
       return this.value?.zoom ?? this.field?.defaultZoom ?? 10;
     },
     mapCenter() {
-      if (!this.value || !this.value.latitude || !this.value.longitude) return undefined;
+      if (!this.value || !this.value.latitude || !this.value.longitude) {
+        if (this.field.defaultCenter) {
+          return this.makeLatLong(this.field.defaultCenter.latitude, this.field.defaultCenter.longitude);
+        }
+
+        return undefined;
+
+      }
 
       return this.makeLatLong(this.value.latitude, this.value.longitude);
 
