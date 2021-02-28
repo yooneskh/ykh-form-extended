@@ -19,7 +19,7 @@
       @update:center="handleChange"
       @update:bounds="handleChange">
       <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <l-marker v-if="mapCenter" :lat-lng="mapCenter" />
+      <l-marker v-if="value && mapCenter" :lat-lng="mapCenter" />
     </l-map>
 
     <div v-if="field.hint" class="caption mt-1 ms-2">
