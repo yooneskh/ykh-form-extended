@@ -116,7 +116,7 @@ export default {
     async loadMedia() {
       if (!this.value) return;
 
-      const { status, result } = await YNetwork.get(`${ENDPOINT_BASE}/media/${this.value}`);
+      const { status, result } = await YNetwork.get(`${this.$apiBase}/media/${this.value}`);
       if (this.$generalHandle(status, result)) return;
 
       this.title = result.name;
