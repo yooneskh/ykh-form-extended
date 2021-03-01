@@ -46,7 +46,7 @@ Icon.Default.mergeOptions({
   shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
 });
 
-import { YFormElementMixin } from '../mixins/y-form-element-mixin';
+import { YFormElementMixin } from 'ykh-form'
 
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
