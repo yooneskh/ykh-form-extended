@@ -150,9 +150,9 @@ wrappy@1:
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
 ykh-form@^1.0.1:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ykh-form/-/ykh-form-1.1.0.tgz#48df571d92a7479af9db990a735592b25cd82595"
-  integrity sha512-A6E1fKVJcUtXK9QCYaFNfWcW3UmdPn8qLXdPRChTfLJo+tBs8V/ghGPa1l4Q0hLk0ejUHRvR3q7In/YRul6PBg==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/ykh-form/-/ykh-form-1.1.2.tgz#6580db0d9ff9311d1588bd8f21c097d22fff4d1e"
+  integrity sha512-/dKtizf/+wx7a4/HoihIYSP1lmHQ34krKgzVNxgHYRx809Ss7ja1m6F9dAsQ+z0KGZmd/t/GrhW0UR6hCaDeNA==
   dependencies:
     moment-jalaali "^0.9.2"
     vue-persian-datetime-picker "^2.6.0"
