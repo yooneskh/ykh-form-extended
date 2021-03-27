@@ -1,4 +1,5 @@
 import { YFormVuetify, YFormElementMixin as _Mixin } from 'ykh-form';
+import _YEditableText from './lib/components/y-editable-text.vue';
 
 export const YKhFormExtended = {
   name: 'YFormExtended',
@@ -12,3 +13,4 @@ export const YKhFormExtended = {
 };
 
 export const YFormElementMixin = _Mixin;
+export const YEditableText = _YEditableText;
