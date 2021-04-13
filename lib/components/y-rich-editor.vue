@@ -72,8 +72,7 @@
       </drag-element>
     </drag-container>
 
-    <div v-if="!readonly" class="add-bar text-center mt-4 mx-auto grey lighten-3 py-1 px-4 mb-4" style="width: 300px; border-radius: 32px;">
-      <span class="caption me-4">افزودن</span>
+    <div v-if="!readonly" class="add-bar text-center mt-4 mx-auto grey lighten-3 py-1 px-4 mb-4" style="max-width: 512px; border-radius: 32px;">
       <v-btn class="ms-2" icon @click="appendPart({ type: 'title', title: '' })"> <v-icon>mdi-format-title</v-icon> </v-btn>
       <v-btn class="ms-2" icon @click="appendPart({ type: 'text', text: '' })"> <v-icon>mdi-text-subject</v-icon> </v-btn>
       <v-btn class="ms-2" icon @click="addImage"> <v-icon>mdi-image</v-icon> </v-btn>
