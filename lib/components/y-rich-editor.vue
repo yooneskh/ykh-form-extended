@@ -106,7 +106,8 @@ export default {
     value: {
       type: String
     },
-    readonly: Boolean
+    readonly: Boolean,
+    defaultMapLocation: Object
   },
   computed: {
     parsedValue() {
@@ -230,16 +231,9 @@ export default {
         description: 'اطلاعات را برای افزودن نقشه اضافه کنید.',
         fields: [
           {
-            key: 'latitude', type: 'text', title: 'Latitude', number: true, dir: 'ltr',
-            rules: [v => !!v || 'Latitude الزامی است!']
-          },
-          {
-            key: 'longitude', type: 'text', title: 'Longitude', number: true, dir: 'ltr',
-            rules: [v => !!v || 'Longitude الزامی است!']
-          },
-          {
-            key: 'zoom', type: 'text', title: 'Zoom', number: true, dir: 'ltr',
-            rules: [v => !!v || 'وارد کردن میزان زوم الزامی است!']
+            key: 'location', type: 'map', title: 'موقعیت مکانی',
+            ...(this.defaultMapLocation || {}),
+            rules: [v => !!v || 'موقعیت مکانی الزامی است!']
           },
           {
             key: 'height', type: 'text', title: 'ارتفاع', dir: 'ltr'
@@ -247,7 +241,7 @@ export default {
         ]
       }); if (!form) return;
 
-      const { latitude, longitude, zoom, height } = form;
+      const { location: { latitude, longitude, zoom }, height } = form;
 
       this.appendPart({ type: 'map', latitude, longitude, zoom, height });
 

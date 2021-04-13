@@ -51,6 +51,7 @@
         :placeholder="field.placeholder"
         :class="field.classes"
         :readonly="field.readonly"
+        :default-map-location="field.defaultMapLocation"
         class="mb-10"
         style="width: 100%; max-width: 800px; margin: 0 auto;"
       />
