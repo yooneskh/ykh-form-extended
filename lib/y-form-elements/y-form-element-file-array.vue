@@ -5,10 +5,10 @@
     :fields="[
       {
         key: 'files', type: 'series', title: field.title,
-        maxSize: field.maxSize,
+        maxSize: field.maxSize, itemWidth: field.itemWidth,
         base: { file: '' }, itemFields: [
           {
-            key: 'file', type: 'file', title: 'File',
+            key: 'file', type: 'file', title: 'فایل',
             getter: (target, index) => bag.files[index] ? bag.files[index].file : undefined
           }
         ]
@@ -31,6 +31,11 @@ export default {
     }
   },
   mixins: [YFormElementMixin],
+  data: () => ({
+    bag: {
+      files: []
+    }
+  }),
   watch: {
     bag: {
       deep: true,
@@ -58,12 +63,7 @@ export default {
     if (this.value) {
       this.bag.files = this.value.map(it => ({ file: it }));
     }
-  },
-  data: () => ({
-    bag: {
-      files: []
-    }
-  })
+  }
 };
 
 </script>
