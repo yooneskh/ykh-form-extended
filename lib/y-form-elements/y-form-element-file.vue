@@ -81,6 +81,7 @@ export default {
       const { status, result } = await YNetwork.post(`${this.$apiBase}/media/init/upload`, { fileName, fileExtension, fileSize });
       if (status !== 200) {
         this.loading = false;
+        this.$toast.error(result?.message || 'مشکلی پیش امده است');
         return;
       }
 
@@ -93,7 +94,14 @@ export default {
         if (xhr.readyState === 4) {
 
           this.loading = false;
-          if (xhr.status !== 201) return;
+          if (xhr.status !== 201) {
+            try {
+              this.$toast.error(JSON.parse(xhr.response).message || 'مشکلی پیش آمده است');
+            }
+            catch {
+              this.$toast.error('مشکلی پیش آمده است');
+            } return;
+          }
 
           const uploadResult = JSON.parse(xhr.response);
           this.$emit('input', uploadResult.mediaId);
