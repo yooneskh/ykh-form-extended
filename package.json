@@ -19,7 +19,7 @@
     "leaflet": "^1.7.1",
     "vue-smooth-dnd": "^0.8.1",
     "vue2-leaflet": "^2.6.0",
-    "ykh-form": "1.4.1",
+    "ykh-form": "1.4.2",
     "ynetwork": "^2.6.0"
   }
 }
