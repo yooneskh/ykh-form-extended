@@ -2,13 +2,6 @@
 # yarn lockfile v1
 
 
-axios@^0.20.0:
-  version "0.20.0"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.20.0.tgz#057ba30f04884694993a8cd07fa394cff11c50bd"
-  integrity sha512-ANA4rr2BDcmmAQLOKft2fufrtuvlqR+cXNNinUmvfeSNCOF98PZL+7M/v1zIdGo7OLjEA9J2gXJL+j4zGsl0bA==
-  dependencies:
-    follow-redirects "^1.10.0"
-
 balanced-match@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.2.tgz#e83e3a7e3f300b34cb9d87f615fa0cbf357690ee"
@@ -26,11 +19,6 @@ concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
   integrity sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
-
-follow-redirects@^1.10.0:
-  version "1.13.2"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.13.2.tgz#dd73c8effc12728ba5cf4259d760ea5fb83e3147"
-  integrity sha512-6mPTgLxYm3r6Bkkg0vNM0HTjfGrOEtsfbhagQvbxDEsEkpNhw582upBaoRZylzen6krEmxXJgt9Ju6HiI4O7BA==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -162,10 +150,3 @@ ykh-form@1.4.2:
     mingo "4.1.2"
     moment-jalaali "^0.9.2"
     vue-persian-datetime-picker "2.6.1"
-
-ynetwork@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/ynetwork/-/ynetwork-2.6.0.tgz#b85431b942c53494f1a551bdfb99cf174f46bb07"
-  integrity sha512-EMBOeX6oStqsgczUUp0qgIO2bltOTC+2ANRVlrZbtGd0Zzu4EM+/pjRhT2aclFbFjtrf2RFz9M94tpScN9Cxfw==
-  dependencies:
-    axios "^0.20.0"
