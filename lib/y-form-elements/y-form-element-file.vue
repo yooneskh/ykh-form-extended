@@ -54,13 +54,20 @@ export default {
     loadingText: '',
     error: false,
     title: '',
-    path: undefined
+    path: undefined,
+    selfUpload: true
   }),
   watch: {
     value: {
       immediate: true,
       handler() {
+        if (this.selfUpload) {
+          this.selfUpload = false;
+          return;
+        }
+
         this.loadMedia();
+
       }
     }
   },
@@ -106,6 +113,9 @@ export default {
           const uploadResult = JSON.parse(xhr.response);
           this.$emit('input', uploadResult.mediaId);
 
+          this.title = `${uploadResult.name}.${uploadResult.extension}`;
+          this.path = uploadResult.path;
+
           await this.$nextTick();
           this.validateValue();
 
@@ -127,7 +137,7 @@ export default {
       const { status, result } = await YNetwork.get(`${this.$apiBase}/media/${this.value}`);
       if (this.$generalHandle(status, result)) return;
 
-      this.title = result.name;
+      this.title = `${result.name}.${result.extension}`;
       this.path = result.path;
 
     },
