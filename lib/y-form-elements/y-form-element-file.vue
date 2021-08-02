@@ -36,7 +36,7 @@
 
 <script>
 
-import YNetwork from 'ynetwork';
+import { YNetwork } from 'ynetwork';
 import { YFormElementMixin } from 'ykh-form'
 
 export default {
@@ -85,14 +85,14 @@ export default {
 
       this.loading = true;
       this.loadingText = '---';
-      const { status, result } = await YNetwork.post(`${this.$apiBase}/media/init/upload`, { fileName, fileExtension, fileSize });
+      const { status, data } = await YNetwork.post(`${this.$apiBase}/media/init/upload`, { fileName, fileExtension, fileSize });
       if (status !== 200) {
         this.loading = false;
-        this.$toast.error(result?.message || 'مشکلی پیش امده است');
+        this.$toast.error(data?.message || 'مشکلی پیش امده است');
         return;
       }
 
-      const { fileToken } = result;
+      const { fileToken } = data;
 
       const xhr = new XMLHttpRequest();
       const url = `${this.$apiBase}/media/upload/${fileToken}`;
@@ -134,11 +134,11 @@ export default {
     async loadMedia() {
       if (!this.value) return;
 
-      const { status, result } = await YNetwork.get(`${this.$apiBase}/media/${this.value}`);
-      if (this.$generalHandle(status, result)) return;
+      const { status, data } = await YNetwork.get(`${this.$apiBase}/media/${this.value}`);
+      if (this.$generalHandle(status, data)) return;
 
-      this.title = `${result.name}.${result.extension}`;
-      this.path = result.path;
+      this.title = `${data.name}.${data.extension}`;
+      this.path = data.path;
 
     },
     openPath() {

@@ -85,7 +85,7 @@
 
 <script>
 
-import YNetwork from 'ynetwork';
+import { YNetwork } from 'ynetwork';
 
 import { Container, Draggable } from "vue-smooth-dnd";
 import { latLng } from 'leaflet';
@@ -179,10 +179,10 @@ export default {
         ]
       }); if (!form) return;
 
-      const { status, result } = await YNetwork.get(`${this.$apiBase}/media/${form.file}`);
-      if (this.$generalHandle(status, result)) return;
+      const { status, data } = await YNetwork.get(`${this.$apiBase}/media/${form.file}`);
+      if (this.$generalHandle(status, data)) return;
 
-      this.appendPart({ type: 'image', path: result.path });
+      this.appendPart({ type: 'image', path: data.path });
 
     },
     async addLink() {
@@ -215,9 +215,9 @@ export default {
       let imagePath;
 
       if (image) {
-        const { status, result } = await YNetwork.get(`${this.$apiBase}/media/${image}`);
-        if (this.$generalHandle(status, result)) return;
-        imagePath = result.path;
+        const { status, data } = await YNetwork.get(`${this.$apiBase}/media/${image}`);
+        if (this.$generalHandle(status, data)) return;
+        imagePath = data.path;
       }
 
       this.appendPart({ type: 'link', link, title, image: imagePath, domain, description });
