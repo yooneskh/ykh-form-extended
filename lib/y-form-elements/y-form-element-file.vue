@@ -55,7 +55,7 @@ export default {
     error: false,
     title: '',
     path: undefined,
-    selfUpload: true
+    selfUpload: false
   }),
   watch: {
     value: {
@@ -111,6 +111,7 @@ export default {
           }
 
           const uploadResult = JSON.parse(xhr.response);
+          this.selfUpload = true;
           this.$emit('input', uploadResult.mediaId);
 
           this.title = `${uploadResult.name}.${uploadResult.extension}`;
