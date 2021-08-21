@@ -18,8 +18,11 @@
       @update:zoom="handleChange"
       @update:center="handleChange"
       @update:bounds="handleChange">
-      <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+      <l-tile-layer :url="tileUrl" />
+
       <l-marker v-if="value && mapCenter" :lat-lng="mapCenter" />
+
     </l-map>
 
     <div v-if="field.hint" class="caption mt-1 ms-2">
@@ -38,12 +41,17 @@
 <script>
 
 import 'leaflet/dist/leaflet.css';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
 import { Icon } from 'leaflet';
+
 delete Icon.Default.prototype._getIconUrl;
 Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl
 });
 
 import { YFormElementMixin } from 'ykh-form'
@@ -53,6 +61,7 @@ import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
 export default {
   name: 'YFormElementMap',
+  mixins: [YFormElementMixin],
   components: {
     'l-map': LMap,
     'l-tile-layer': LTileLayer,
@@ -65,7 +74,9 @@ export default {
       required: true
     }
   },
-  mixins: [YFormElementMixin],
+  data: () => ({
+    tileUrl: (window.__env__ && window.__env__.yMapTileUrl) ? window.__env__.yMapTileUrl : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  }),
   computed: {
     mapZoom() {
       return this.value?.zoom ?? this.field?.defaultZoom ?? 10;

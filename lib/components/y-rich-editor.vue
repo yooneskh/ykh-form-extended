@@ -31,7 +31,7 @@
 
         <template v-if="part.type === 'map'">
           <l-map :zoom="part.zoom" :center="makeLatLong(part.latitude, part.longitude)" :options="{}" :style="`height: ${part.height || '300px'}`">
-            <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <l-tile-layer :url="tileUrl" />
             <l-marker :lat-lng="makeLatLong(part.latitude, part.longitude)" />
           </l-map>
         </template>
@@ -87,14 +87,29 @@
 
 import { YNetwork } from 'ynetwork';
 
+import YEditableText from './y-editable-text.vue';
 import { Container, Draggable } from "vue-smooth-dnd";
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
 
+import 'leaflet/dist/leaflet.css';
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png';
+import iconUrl from 'leaflet/dist/images/marker-icon.png';
+import shadowUrl from 'leaflet/dist/images/marker-shadow.png';
+
+import { Icon } from 'leaflet';
+
+delete Icon.Default.prototype._getIconUrl;
+Icon.Default.mergeOptions({
+  iconRetinaUrl,
+  iconUrl,
+  shadowUrl
+});
+
 export default {
   name: 'YRichEditor',
   components: {
-    'y-editable-text': require('./y-editable-text').default,
+    'y-editable-text': YEditableText,
     'drag-container': Container,
     'drag-element': Draggable,
     'l-map': LMap,
@@ -108,6 +123,9 @@ export default {
     readonly: Boolean,
     defaultMapLocation: Object
   },
+  data: () => ({
+    tileUrl: (window.__env__ && window.__env__.yMapTileUrl) ? window.__env__.yMapTileUrl : 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  }),
   computed: {
     parsedValue() {
       return JSON.parse(this.value || '{"parts":[],"config":{}}');

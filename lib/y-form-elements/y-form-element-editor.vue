@@ -64,11 +64,12 @@
 <script>
 
 import { YFormElementMixin } from 'ykh-form';
+import YRichEditor from '../components/y-rich-editor.vue';
 
 export default {
   name: 'YFormElementEditor',
   components: {
-    'y-rich-editor': require('../components/y-rich-editor').default
+    'y-rich-editor': YRichEditor
   },
   props: {
     value: { },
