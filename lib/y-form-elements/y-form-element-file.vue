@@ -83,36 +83,38 @@ export default {
       const fileExtension = file.name.slice(file.name.lastIndexOf('.') + 1);
       const fileSize = file.size;
 
-      this.loading = true;
-      this.loadingText = '---';
-      const { status, data } = await YNetwork.post(`${this.$apiBase}/media/init/upload`, { fileName, fileExtension, fileSize });
-      if (status !== 200) {
-        this.loading = false;
-        this.$toast.error(data?.message || 'مشکلی پیش امده است');
-        return;
-      }
-
-      const { fileToken } = data;
 
       const xhr = new XMLHttpRequest();
-      const url = `${this.$apiBase}/media/upload/${fileToken}`;
+      const url = `${this.$apiBase}/media/upload`;
+
+      xhr.open('POST', url, true);
+      xhr.setRequestHeader('Authorization', this.$token);
+
+      const payload = new FormData();
+      payload.append('file', file);
+      xhr.send(payload);
 
       xhr.onreadystatechange = async () => {
         if (xhr.readyState === 4) {
 
           this.loading = false;
-          if (xhr.status !== 201) {
+
+          if (xhr.status !== 200) {
+
             try {
               this.$toast.error(JSON.parse(xhr.response).message || 'مشکلی پیش آمده است');
             }
             catch {
               this.$toast.error('مشکلی پیش آمده است');
-            } return;
+            }
+
+            return;
+
           }
 
           const uploadResult = JSON.parse(xhr.response);
           this.selfUpload = true;
-          this.$emit('input', uploadResult.mediaId);
+          this.$emit('input', uploadResult._id);
 
           this.title = `${uploadResult.name}.${uploadResult.extension}`;
           this.path = uploadResult.path;
@@ -124,12 +126,8 @@ export default {
       };
 
       xhr.upload.onprogress = (progressEvent) => {
-        this.loadingText = +( (progressEvent.loaded) * 100 / progressEvent.total ).toFixed(2) + '%';
+        this.loadingText = ( (progressEvent.loaded) * 100 / progressEvent.total ).toFixed(2) + '%';
       };
-
-      xhr.open('POST', url, true);
-      xhr.setRequestHeader('Authorization', this.$token);
-      xhr.send(file);
 
     },
     async loadMedia() {
