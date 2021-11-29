@@ -4,15 +4,12 @@
     <drag-container @drop="handleDrop" :drag-handle-selector="readonly ? '#non-existant-id' : '.drag-handle'">
       <drag-element v-for="(part, index) in parsedValue.parts" :key="part._id" class="editor-item">
 
-        <h2
-          v-if="part.type === 'title'"
-          class="text-h5">
-          <y-editable-text :value="part.title" @input="updatePart(index, { title: $event })" lazy :readonly="readonly" placeholder="جای متن شما ..." />
-        </h2>
-
-        <p v-if="part.type === 'text'">
-          <y-editable-text :value="part.text" @input="updatePart(index, { text: $event })" lazy :readonly="readonly" placeholder="جای متن شما ..." />
-        </p>
+        <div v-if="part.type === 'text'">
+          <y-milkdown-editor
+            :value="part.text"
+            @input="updatePart(index, { text: $event })"
+          />
+        </div>
 
         <v-img
           v-if="part.type === 'image'"
@@ -49,19 +46,11 @@
               </v-btn>
             </template>
             <v-list dense min-width="200">
-              <v-list-item v-if="part.type === 'title'" @click="convertToParagraph(index)">
-                <v-list-item-content>
-                  <v-list-item-title>تبدیل به متن</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-              <v-list-item v-if="part.type === 'text'" @click="convertToTitle(index)">
-                <v-list-item-content>
-                  <v-list-item-title>تبدیل به عنوان</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
               <v-list-item color="error" @click="deletePart(index)">
                 <v-list-item-content>
-                  <v-list-item-title class="error--text">حذف</v-list-item-title>
+                  <v-list-item-title class="error--text">
+                    حذف
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -73,11 +62,31 @@
     </drag-container>
 
     <div v-if="!readonly" class="add-bar text-center mt-4 mx-auto grey lighten-3 py-1 px-4 mb-4" style="max-width: 512px; border-radius: 32px;">
-      <v-btn class="ms-2" icon @click="appendPart({ type: 'title', title: '' })"> <v-icon>mdi-format-title</v-icon> </v-btn>
-      <v-btn class="ms-2" icon @click="appendPart({ type: 'text', text: '' })"> <v-icon>mdi-text-subject</v-icon> </v-btn>
-      <v-btn class="ms-2" icon @click="addImage"> <v-icon>mdi-image</v-icon> </v-btn>
-      <v-btn class="ms-2" icon @click="addLink"> <v-icon>mdi-link</v-icon> </v-btn>
-      <v-btn class="ms-2" icon @click="addMap"> <v-icon>mdi-map</v-icon> </v-btn>
+
+      <v-btn class="ms-2" icon @click="appendPart({ type: 'text', text: '' })">
+        <v-icon>
+          mdi-text
+        </v-icon>
+      </v-btn>
+
+      <v-btn class="ms-2" icon @click="addImage">
+        <v-icon>
+          mdi-image
+        </v-icon>
+      </v-btn>
+
+      <v-btn class="ms-2" icon @click="addLink">
+        <v-icon>
+          mdi-link
+        </v-icon>
+      </v-btn>
+
+      <v-btn class="ms-2" icon @click="addMap">
+        <v-icon>
+          mdi-map
+        </v-icon>
+      </v-btn>
+
     </div>
 
   </div>
@@ -87,7 +96,7 @@
 
 import { YNetwork } from 'ynetwork';
 
-import YEditableText from './y-editable-text.vue';
+import YMilkdownEditor from './y-milkdown-editor';
 import { Container, Draggable } from "vue-smooth-dnd";
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
@@ -109,7 +118,7 @@ Icon.Default.mergeOptions({
 export default {
   name: 'YRichEditor',
   components: {
-    'y-editable-text': YEditableText,
+    'y-milkdown-editor': YMilkdownEditor,
     'drag-container': Container,
     'drag-element': Draggable,
     'l-map': LMap,
@@ -150,28 +159,6 @@ export default {
         JSON.stringify({
           ...this.parsedValue,
           parts: this.parsedValue.parts.map((it, itIndex) => itIndex === index ? ({ ...it, ...updates }) : it)
-        })
-      );
-    },
-    convertToParagraph(index) {
-      this.$emit(
-        'input',
-        JSON.stringify({
-          ...this.parsedValue,
-          parts: this.parsedValue.parts.map((it, itIndex) =>
-            itIndex === index ? ({ _id: this.$uuid(), type: 'text', text: it.title }) : it
-          )
-        })
-      );
-    },
-    convertToTitle(index) {
-      this.$emit(
-        'input',
-        JSON.stringify({
-          ...this.parsedValue,
-          parts: this.parsedValue.parts.map((it, itIndex) =>
-            itIndex === index ? ({ _id: this.$uuid(), type: 'title', title: it.text }) : it
-          )
         })
       );
     },

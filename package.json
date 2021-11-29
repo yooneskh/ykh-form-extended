@@ -16,6 +16,10 @@
   "author": "Yoones Khoshghadam",
   "license": "ISC",
   "dependencies": {
+    "@milkdown/core": "5.1.2",
+    "@milkdown/plugin-listener": "5.1.2",
+    "@milkdown/preset-commonmark": "5.1.2",
+    "@milkdown/theme-nord": "5.1.2",
     "leaflet": "^1.7.1",
     "vue-smooth-dnd": "^0.8.1",
     "vue2-leaflet": "2.7.1",
