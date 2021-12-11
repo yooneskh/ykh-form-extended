@@ -18,8 +18,10 @@
   "dependencies": {
     "@milkdown/core": "5.2.0",
     "@milkdown/plugin-listener": "5.2.0",
+    "@milkdown/plugin-math": "5.2.0",
     "@milkdown/plugin-tooltip": "5.2.0",
     "@milkdown/preset-commonmark": "5.2.0",
+    "@milkdown/preset-gfm": "5.2.0",
     "@milkdown/theme-nord": "5.2.0",
     "leaflet": "^1.7.1",
     "vue-smooth-dnd": "^0.8.1",

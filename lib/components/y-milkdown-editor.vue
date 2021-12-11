@@ -7,8 +7,11 @@
 import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
 import { nord } from '@milkdown/theme-nord';
 import { commonmark } from '@milkdown/preset-commonmark';
+import { gfm } from '@milkdown/preset-gfm';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
 import { tooltip } from '@milkdown/plugin-tooltip';
+import { math } from '@milkdown/plugin-math';
+import 'katex/dist/katex.min.css';
 
 
 export default {
@@ -41,8 +44,10 @@ export default {
 
     this.editor.use(nord);
     this.editor.use(commonmark);
+    this.editor.use(gfm);
     this.editor.use(listener);
     this.editor.use(tooltip);
+    this.editor.use(math);
 
     this.editor.create();
 
