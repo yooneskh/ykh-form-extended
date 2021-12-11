@@ -9,7 +9,6 @@ import { nord } from '@milkdown/theme-nord';
 import { commonmark } from '@milkdown/preset-commonmark';
 import { tooltip } from '@milkdown/plugin-tooltip';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
-import { history } from '@milkdown/plugin-history';
 import { clipboard } from '@milkdown/plugin-clipboard';
 import { indent } from '@milkdown/plugin-indent';
 import { table } from '@milkdown/plugin-table';
@@ -48,7 +47,6 @@ export default {
     this.editor.use(commonmark);
     this.editor.use(tooltip);
     this.editor.use(listener);
-    this.editor.use(history);
     this.editor.use(clipboard);
     this.editor.use(indent);
     this.editor.use(table);
