@@ -1,6 +1,6 @@
 {
   "name": "ykh-form-extended",
-  "version": "1.6.10",
+  "version": "1.6.11",
   "description": "Opinionated form elements added to ykh-form",
   "main": "index.js",
   "scripts": {
