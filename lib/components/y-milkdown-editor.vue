@@ -7,7 +7,14 @@
 import { defaultValueCtx, Editor, rootCtx } from '@milkdown/core';
 import { nord } from '@milkdown/theme-nord';
 import { commonmark } from '@milkdown/preset-commonmark';
+import { tooltip } from '@milkdown/plugin-tooltip';
 import { listener, listenerCtx } from '@milkdown/plugin-listener';
+import { history } from '@milkdown/plugin-history';
+import { clipboard } from '@milkdown/plugin-clipboard';
+import { indent } from '@milkdown/plugin-indent';
+import { table } from '@milkdown/plugin-table';
+import { menu } from '@milkdown/plugin-menu';
+
 
 export default {
   name: 'YMilkdownEditor',
@@ -39,7 +46,13 @@ export default {
 
     this.editor.use(nord);
     this.editor.use(commonmark);
+    this.editor.use(tooltip);
     this.editor.use(listener);
+    this.editor.use(history);
+    this.editor.use(clipboard);
+    this.editor.use(indent);
+    this.editor.use(table);
+    this.editor.use(menu());
 
     this.editor.create();
 
