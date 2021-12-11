@@ -160,14 +160,6 @@
     "@milkdown/exception" "5.2.0"
     tslib "^2.3.1"
 
-"@milkdown/design-system@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/design-system/-/design-system-5.1.2.tgz#62afedf9ecbe3cdcae20bb00d04f5ceb47aa120f"
-  integrity sha512-VEsvE/iW54peYbQaaKpOu4DcUUvwaYqNci/e5QVckXyemn02cxnSLMDBTbQMm/hqLwI3K+lQn/JnYRfzaU4yCQ==
-  dependencies:
-    "@emotion/css" "^11.1.3"
-    tslib "^2.3.1"
-
 "@milkdown/design-system@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@milkdown/design-system/-/design-system-5.2.0.tgz#e5be23cb731f56429c0f6a1202de7cc2a491d3aa"
@@ -224,13 +216,13 @@
     prosemirror-view "^1.23.2"
     tslib "^2.3.1"
 
-"@milkdown/theme-nord@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/theme-nord/-/theme-nord-5.1.2.tgz#096f7d61863547b7c184bf962d8a5fa4011748b7"
-  integrity sha512-itItihabgE2y7ccUIRFZ6BNINRAhPZGllSq4ANSBc0f+7IcK05dshYTX5vwwkMdq051o2ZJTuy+N1/SPVX7F/Q==
+"@milkdown/theme-nord@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@milkdown/theme-nord/-/theme-nord-5.2.0.tgz#c83fa87b5a56037c1c19ae33926d11c9eb9e7be7"
+  integrity sha512-g3hivbo9O0CWoZncmIuryGUotpNCm6aUL+hVn3VwoiHvzi1YlTsNrAZXvIkMyfKMhdE1XcZm/TdjPiSYtKgJdg==
   dependencies:
     "@emotion/css" "^11.1.3"
-    "@milkdown/design-system" "5.1.2"
+    "@milkdown/design-system" "5.2.0"
 
 "@milkdown/transformer@5.2.0":
   version "5.2.0"
