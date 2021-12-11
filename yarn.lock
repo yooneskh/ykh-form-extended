@@ -190,10 +190,10 @@
   dependencies:
     tslib "^2.3.1"
 
-"@milkdown/plugin-listener@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/plugin-listener/-/plugin-listener-5.1.2.tgz#f3aa387891b599e9f9e667a05821aa7491b1a929"
-  integrity sha512-zOyl8QCtLx7ySE4d1SsAewayOm2RBiGmOO3e0Iuji2/in7HvJRq8HkihdeQ0ugb1LBvgXCIRQAcLwFat7tl+og==
+"@milkdown/plugin-listener@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@milkdown/plugin-listener/-/plugin-listener-5.2.0.tgz#e55c9b43205078c6b799deef0cccfc79a97f0b10"
+  integrity sha512-QceZbdx9lJUMpJwWoAxi+XJO0qgKvFKXHIw8UbpLPVP1vxFdb+EytXdzxYC3lPmwC1YpHOFA/Wb5jENzV7n2Mg==
   dependencies:
     tslib "^2.3.1"
 
