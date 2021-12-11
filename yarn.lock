@@ -176,13 +176,6 @@
     "@emotion/css" "^11.1.3"
     tslib "^2.3.1"
 
-"@milkdown/exception@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/exception/-/exception-5.1.2.tgz#53b2eb411882ad9758aa2a83c622862797ae41b7"
-  integrity sha512-3fG2vRadlKs+uGSXqIy8bj2SXIMrDsSArGuKs85Lng5TiXB42uXRqlbFe/3Z/EPkeTK1o2pFGWhE55szZXgc2w==
-  dependencies:
-    tslib "^2.3.1"
-
 "@milkdown/exception@5.2.0":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@milkdown/exception/-/exception-5.2.0.tgz#d9b286567ddbea69b3c6d3ffce8a035819155ee7"
@@ -197,13 +190,13 @@
   dependencies:
     tslib "^2.3.1"
 
-"@milkdown/preset-commonmark@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/preset-commonmark/-/preset-commonmark-5.1.2.tgz#8fa117ad492ae85e1000355248ece1f7066af348"
-  integrity sha512-p+ycNYdgTIaGTKpTQ/BNweEsUCPvp8WYIEWzb7njrUjj86E4vzfQQgDgVHoJkRqsoE2FbwPOHhkbRvB8pHuBJg==
+"@milkdown/preset-commonmark@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@milkdown/preset-commonmark/-/preset-commonmark-5.2.0.tgz#15081e4903a205574a5feba7cd1176e6a0bc0b7f"
+  integrity sha512-WEDbHiLay/kK9BZEOiY1zLvqVz4OKOmG9/iQ3Mocg+C1tXkhVVL+SALmjZ8TXMR9lj73xkplxlckR+UyRRjapw==
   dependencies:
     "@emotion/css" "^11.1.3"
-    "@milkdown/utils" "5.1.2"
+    "@milkdown/utils" "5.2.0"
     "@types/prosemirror-schema-list" "^1.0.3"
     prosemirror-schema-list "^1.1.4"
     remark-inline-links "^5.0.0"
@@ -250,12 +243,12 @@
     tslib "^2.3.1"
     unified "^10.1.0"
 
-"@milkdown/utils@5.1.2":
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/@milkdown/utils/-/utils-5.1.2.tgz#7460da5898ac516cf7805ca9e63dfed7287c76fc"
-  integrity sha512-VEu7yXSuoalJ6HWm8KEhWMJshK9lJVUwz8YkbrHSBoWn2p0gbjX1k4IgY50cU1E//VmX+dg4Zf3IR6NIhiccpQ==
+"@milkdown/utils@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@milkdown/utils/-/utils-5.2.0.tgz#679febd4cb85f60216981c50fcff85d20f197ff1"
+  integrity sha512-WYVLZ+EZkbTrp4qdt7HC6kM7iTCBPNulsfgw5NP3l00Wjp55jOPrVqtfeTcD2tgQuHe8DUbgcfrB0RoqAGyrhA==
   dependencies:
-    "@milkdown/exception" "5.1.2"
+    "@milkdown/exception" "5.2.0"
     tslib "^2.3.1"
 
 "@types/debug@^4.0.0":
