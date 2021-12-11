@@ -5,6 +5,7 @@
 <script>
 
 import EasyMDE from 'easymde';
+import 'easymde/dist/easymde.min.css';
 
 
 export default {
@@ -17,22 +18,25 @@ export default {
   }),
   watch: {
     value() {
-      this.editor.value(this.value);
+      if (this.value !== this.editor.value()) {
+        this.editor.value(this.value);
+      }
     }
   },
   mounted() {
 
-    this.editor = new EasyMDE({
-      element: this.$el,
-      autoDownloadFontAwesome: false,
-      indentWithTabs: false,
-      initialValue: this.value,
-      status: false
-    });
+    if (!this.editor) {
 
-    this.editor.value(this.value);
+      this.editor = new EasyMDE({
+        element: this.$el,
+        indentWithTabs: false,
+        initialValue: this.value,
+        status: false
+      });
 
-    this.editor.codemirror.on('change', this.onValueChange);
+      this.editor.codemirror.on('change', this.onValueChange);
+
+    }
 
   },
   beforeDestroy() {
