@@ -33,6 +33,23 @@
           </l-map>
         </template>
 
+        <v-card v-if="part.type === 'file'" :href="part.path" target="_blank" outlined class="my-4 d-flex align-center flex-row pa-1">
+          <v-icon size="72">
+            mdi-file
+          </v-icon>
+          <div>
+
+            <div class="text-h6">
+              {{ part.title }}
+            </div>
+
+            <div class="text-body-1 mt-3" style="white-space: nowrap;">
+              {{ part.description }}
+            </div>
+
+          </div>
+        </v-card>
+
         <div class="actions-container" :style="{[$vuetify.rtl ? 'left' : 'right']: '4px'}">
 
           <v-btn class="drag-handle" icon small>
@@ -84,6 +101,12 @@
       <v-btn class="ms-2" icon @click="addMap">
         <v-icon>
           mdi-map
+        </v-icon>
+      </v-btn>
+
+      <v-btn class="ms-2" icon @click="addFile">
+        <v-icon>
+          mdi-file
         </v-icon>
       </v-btn>
 
@@ -248,6 +271,36 @@ export default {
       const { location: { latitude, longitude, zoom }, height } = form;
 
       this.appendPart({ type: 'map', latitude, longitude, zoom, height });
+
+    },
+    async addFile() {
+
+      const form = await this.$dialogFormMaker({
+        title: 'افزودن فایل',
+        description: 'اطلاعات فایل را برای افزودن انتخاب کنید.',
+        fields: [
+          {
+            key: 'file', type: 'file', title: 'فایل',
+            rules: [v => !!v || 'فایل الزامی است!']
+          },
+          {
+            key: 'title', type: 'text', title: 'عنوان',
+            rules: [v => !!v || 'عنوان الزامی است!']
+          },
+          {
+            key: 'description', type: 'text', title: 'توضیح',
+            rules: [v => !!v || 'توضیح الزامی است!']
+          }
+        ]
+      }); if (!form) return;
+
+      const { file, title, description } = form;
+
+      const { status, data } = await YNetwork.get(`${this.$apiBase}/media/${file}`);
+      if (this.$generalHandle(status, data)) return;
+      const filePath = data.path;
+
+      this.appendPart({ type: 'file', path: filePath, title, description });
 
     },
     handleDrop(dropResult) {
