@@ -31,7 +31,12 @@ export default {
         element: this.$el,
         indentWithTabs: false,
         initialValue: this.value,
-        status: false
+        status: false,
+        promptURLs: true,
+        spellChecker: false,
+        direction: this.$vuetify.rtl ? 'rtl' : 'ltr',
+        hideIcons: ['guide', 'image'],
+        showIcons: ['strikethrough', 'heading-smaller', 'heading-bigger', 'heading-1', 'heading-2', 'heading-3', 'quote', 'code', 'clean-block', 'table', 'horizontal-rule', ]
       });
 
       this.editor.codemirror.on('change', this.onValueChange);
