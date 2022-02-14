@@ -209,10 +209,10 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
-ykh-form@1.5.5:
-  version "1.5.5"
-  resolved "https://registry.yarnpkg.com/ykh-form/-/ykh-form-1.5.5.tgz#02fcefeda83d86fe8ebb0d3fa739999bc10007af"
-  integrity sha512-LpXzV7HrF0TW1eN4r5Z0/aS+409TEotDvJvCnsDvWD9rmLMVoMUij7uTzaoXK3eAd42HMxrtoAVliFUG9TFcXw==
+ykh-form@1.5.6:
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/ykh-form/-/ykh-form-1.5.6.tgz#8b22042e8fdfb7d7a7070f47ddc96633e3af9983"
+  integrity sha512-NCpnLIk6TIHcQMGWynFEnSpaQfq0cmdEh2xs9QwGuJ9qJWaZ2MjlBaGlEtx+Hl2KEjDPfPTO+1Sqv7eKaFemFQ==
   dependencies:
     mingo "4.1.3"
     moment-jalaali "0.9.4"
