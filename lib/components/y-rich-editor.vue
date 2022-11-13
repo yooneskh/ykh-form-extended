@@ -5,9 +5,10 @@
       <drag-element v-for="(part, index) in parsedValue.parts" :key="part._id" class="editor-item">
 
         <div v-if="part.type === 'text'">
-          <y-markdown-editor
+          <y-html-editor
             :value="part.text"
             @input="updatePart(index, { text: $event })"
+            style="height: 400px;"
           />
         </div>
 
@@ -119,7 +120,8 @@
 
 import { YNetwork } from 'ynetwork';
 
-import YMarkdownEditor from './y-markdown-editor';
+// import YMarkdownEditor from './y-markdown-editor';
+import YHtmlEditor from './y-html-editor.vue';
 import { Container, Draggable } from "vue-smooth-dnd";
 import { latLng } from 'leaflet';
 import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
@@ -141,7 +143,8 @@ Icon.Default.mergeOptions({
 export default {
   name: 'YRichEditor',
   components: {
-    'y-markdown-editor': YMarkdownEditor,
+    // 'y-markdown-editor': YMarkdownEditor,
+    'y-html-editor': YHtmlEditor,
     'drag-container': Container,
     'drag-element': Draggable,
     'l-map': LMap,
