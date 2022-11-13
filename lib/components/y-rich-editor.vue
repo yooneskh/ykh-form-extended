@@ -4,11 +4,10 @@
     <drag-container @drop="handleDrop" :drag-handle-selector="readonly ? '#non-existant-id' : '.drag-handle'">
       <drag-element v-for="(part, index) in parsedValue.parts" :key="part._id" class="editor-item">
 
-        <div v-if="part.type === 'text'">
+        <div v-if="part.type === 'text'" class="pt-6">
           <y-html-editor
             :value="part.text"
             @input="updatePart(index, { text: $event })"
-            style="height: 400px;"
           />
         </div>
 
