@@ -45,6 +45,7 @@ const EDITOR_CONFIG = {
       'mediaEmbed',
       'insertTable',
       'codeBlock',
+      'imageUpload',
       'blockQuote',
       'htmlEmbed',
       'code',
@@ -52,6 +53,14 @@ const EDITOR_CONFIG = {
     ]
   },
   language: 'fa',
+  image: {
+    toolbar: [
+      'imageTextAlternative',
+      'imageStyle:full',
+      'imageStyle:side',
+      'linkImage'
+    ]
+  },
   table: {
     contentToolbar: [
       'tableColumn',
