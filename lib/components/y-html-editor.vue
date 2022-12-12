@@ -153,7 +153,7 @@ export default {
 </script>
 
 <style>
-  .y-form-editor + .ck .ck-editor__editable {
+  .y-form-editor + .ck .ck-editor__editable:not(figcaption) {
     min-height: 400px;
   }
 </style>
